@@ -1,0 +1,117 @@
+@import "https://fonts.googleapis.com/css?family=Quicksand&display=swap";
+
+body {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 1.2em;
+}
+
+.allergen {
+  font-weight: bold;
+}
+
+#burgare {
+  background-color: black;
+  color: white;
+  border: 2px dashed white;
+}
+
+#kundinfo {
+  border: 2px dashed black;
+}
+
+button:hover {
+  background-color: pink;
+  cursor: pointer;
+}
+
+section {
+  margin: 1em;
+  padding-left: 1em;
+}
+
+button {
+  margin: 20px 0px;
+}
+
+header {
+  margin: 1em;
+  height: 12em;
+  overflow: hidden;
+}
+
+#headerpic {
+  opacity: 0.7;
+  width: 100%;
+  height: auto;
+}
+
+#headertext {
+  position: absolute;
+  top: 1.5em;
+  padding-left: 1em;
+}
+
+ul {
+  text-align: left;
+  position: relative;
+}
+
+.burgeritems {
+  display: grid;
+  grid-column-gap: 6em;
+  grid-template-columns: repeat(auto-fill,10em);
+  text-align: center;
+}
+#checkorder {
+  position: absolute;
+  bottom:0;
+}
+
+.view-box {
+	width: 90%;
+	height: 50vh;
+	margin: 1em auto;
+	overflow: scroll;
+	border: 1px solid rgba(0,0,0,0.4);
+	box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+}
+#dots {
+	position: relative;
+	margin: 0;
+	padding: 0;
+	background: url(/img/polacks.jpg);
+	background-repeat: no-repeat;
+	width:1920px;
+	height: 1078px;
+	cursor: crosshair;
+}
+
+#dots div {
+	position: absolute;
+	background: black;
+	color: white;
+	border-radius: 10px;
+	width:20px;
+	height:20px;
+	text-align: center;
+}
+
+#orderList {
+	top:1em;
+	left:1em;
+	position: absolute;
+	z-index: 2;
+	color:black;
+	background: rgba(255,255,255, 0.5);
+	padding: 1em;
+}
+
+#custinfodis {
+  font-style:oblique;
+  font-size: 0.7em;
+}
+
+#ordinfodis {
+  font-weight:bold;
+  font-size: 0.8em;
+}
