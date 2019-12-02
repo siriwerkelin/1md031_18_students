@@ -1,9 +1,115 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <title>DELI-VERY</title>
-    </head>
-    <body>
-        <h1>Hello World!!!</h1>
-    </body>
+<html lang="sv">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="/socket.io/socket.io.js" defer></script>
+  <script type="text/javascript" src="js/menu.js"></script>
+  <script src="js/js_script.js"></script>
+  <script src="https://vuejs.org/js/vue.js"></script>
+  <link rel="resetfile" type="text/css" href="css/reset.css">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <script src="js/deli-very.js" defer></script>
+  <script src="/vue/vue.js" defer></script>
+
+  <title>Burgartest</title>
+</head>
+
+<body>
+  <header>
+    <img src="http://i.knd.io/luploads/1460/1460-header-2304863879-64-lg.jpg" id="headerpic">
+    <h1 id="headertext">Välkommen till BurgerOnline</h1>
+  </header>
+  <main id="mainId">
+    <section id=burgare>
+      <h1 id="header">Välj en burgare</h1>
+      <p> Lägg till de burgare du vill ha</p>
+
+      <div class=burgeritems>
+
+        <ul v-for="burger in menu">
+          <h3>
+            {{burger.name}}
+          </h3>
+          <img :src=burger.img height="200">
+          <li>
+            {{burger.kCal}} kcal
+          </li>
+          <li>
+            {{burger.desc}}
+          </li>
+          <li v-if="burger.gluten">
+            {{gluten}}
+          </li>
+          <li v-if="burger.lactose">
+            {{lactose}}
+          </li>
+          <br>
+          <br>
+          <div id=checkorder >
+            <input type="checkbox" name="orderburger" :value="burger.name">Lägg till
+          </div>
+        </ul>
+      </div>
+
+    </section>
+    <section id="kundinfo">
+      <h3>Kundinformation</h3>
+      <p>Här fyller du i nödvändig information</p>
+      <form>
+        <h4>Leveransinformation:</h4>
+        <p>
+          <label for="namn">Fullständigt namn</label><br>
+          <input type="text" id="namn" name="fn" required="required" placeholder="För- och efternamn">
+        </p>
+        <p>
+          <label for="email">E-mail</label><br>
+          <input type="email" id="email" name="em" required="required" placeholder="Mailadress">
+        </p>
+        <p>
+          <label for="betalning">Betalningsmetod</label><br>
+          <select id="betalning" name="bet">
+            <option>Kreditkort</option>
+            <option selected="selected">Swish</option>
+            <option>Faktura</option>
+            <option>Banköverföring</option>
+          </select>
+        </p>
+        <input type="radio" name="kön" value="man">Man<br>
+        <input type="radio" name="kön" value="kvinna">Kvinna<br>
+        <input type="radio" name="kön" value="ickebinär">Ickebinär<br>
+        <input type="radio" name="kön" value="hemligt">Vill ej svara<br>
+      </form>
+      <p> Ange leveransadress genom att klicka på kartan! </p>
+      <div class="view-box">
+        <div id="dots" v-on:click="displayOrder">
+          <div v-bind:style="{ left: location.x + 'px', top: location.y + 'px'}">
+            T
+          </div>
+        </div>
+      </div>
+      <button id="myButtonID" type="skicka" v-on:click="addOrder"><img src="https://image.flaticon.com/icons/png/512/126/126083.png" height=15>Lägg beställning</button>
+      <br>
+      </div>
+    </section>
+    <div v-if=ordered>
+      <h3>Orderbekräftelse</h3>
+      <h4>Kundinformation</h4>
+      Namn: {{customerInfo[0]}}<br>
+      Email: {{customerInfo[1]}}<br>
+      Betalningsmetod: {{customerInfo[2]}}<br>
+      Kön: {{customerInfo[3]}}<br>
+      <h4>Ordersummering</h4>
+      <ul>
+        <li v-for="item in chosenItems">
+          {{item}}
+        </li>
+      </ul>
+    </div>
+    <hr>
+  </main>
+  <footer> &copy; Siri Werkelin </footer>
+</body>
+
 </html>
